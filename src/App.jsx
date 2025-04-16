@@ -2,23 +2,31 @@ import { useState } from 'react'
 
 const App = () => {
 
-	const [clicks, setClicks] = useState({left: 0, right: 0})
+	const [left, setLeft] = useState(0)
+	const [right, setRight] = useState(0)
+	const [allClicks, setAll] = useState([])
+	const [total, setTotal] = useState(0)
 
 	const handleLeftClick = () => {
-		// Pull in state object properties, update the one that's needed
-		setClicks({...clicks, left: clicks.left + 1})
+		setAll(allClicks.concat('L'))	
+		const updatedLeft = left + 1 // Pass updated value to state before rerender.
+		setLeft(updatedLeft)
+		setTotal(updatedLeft + right)
 	}
 
 	const handleRightClick = () => {
-		setClicks({...clicks, right: clicks.right + 1})
+		setAll(allClicks.concat('R'))
+		const updatedRight = right + 1
+		setRight(updatedRight)
+		setTotal(updatedRight + left)
 	}
 
 	return (
 	<div>
-		{clicks.left}
 		<button onClick={handleLeftClick}>Left</button>
 		<button onClick={handleRightClick}>Right</button>
-		{clicks.right}
+		<p>History: {allClicks}</p>
+		<p>Total: {total}</p>
 	</div>
 	)
 }
