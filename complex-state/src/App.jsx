@@ -12,7 +12,7 @@ const App = () => {
 
     <div>
       {value}
-      <button onClick={handleClick}>reset to zero</button>
+      <button onClick={handleClick()}>reset to zero</button>
     </div>
   )
 }
