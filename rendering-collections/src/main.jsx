@@ -19,6 +19,7 @@ const notes = [
   }
 ]
 
+// Create the root component, and pass in the `notes` array as props to <App />
 ReactDOM.createRoot(document.getElementById('root')).render(
   <App notes={notes} />
 )
