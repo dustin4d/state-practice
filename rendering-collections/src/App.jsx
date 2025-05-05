@@ -1,3 +1,9 @@
+const Note = ({ note }) => {
+  return (
+    // Create a <li> element with the content of the note inside from the `note` object passed in from props
+    <li>{note.content}</li>
+  )
+}
 const App = ({notes}) => {
   return (
     <div>
@@ -6,9 +12,9 @@ const App = ({notes}) => {
         {/* Writing across multiple lines like this is supposedly easier to read */}
         {/* Loop the entire array */}
         {notes.map(note => 
-          <li key={note.id}> {/* Avoid warnings from React, provide key value with each <li> returned  */}
-            {note.content} {/* Return the string of this property */}
-          </li>)}
+          /*Pass the key here, then pass the entire note object over to the component via props */
+          <Note key={note.id} note={note} />
+        )}
       </ul>
     </div>
   )
